@@ -42,7 +42,10 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.7.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    // jtransforms for FFT
+    // TensorFlow Lite for machine learning
+    implementation("org.tensorflow:tensorflow-lite:2.9.0")
+
+    // jtransforms for FFT (if needed for audio processing)
     implementation("com.github.wendykierp:JTransforms:3.1")
 
     // Testing libraries

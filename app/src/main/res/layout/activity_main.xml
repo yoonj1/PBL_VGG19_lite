@@ -5,15 +5,59 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- 음성 파일 선택 버튼 -->
     <Button
         android:id="@+id/select_audio_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Audio File" />
+        android:text="음성 파일 선택"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"/>
 
+    <!-- MFCC 추출 버튼 -->
     <Button
         android:id="@+id/extract_mfcc_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Extract MFCC" />
+        android:text="MFCC 추출"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- MFCC 이미지 확인 버튼 -->
+    <Button
+        android:id="@+id/view_mfcc_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MFCC 이미지 확인"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- 분류 버튼 -->
+    <Button
+        android:id="@+id/classify_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이미지 분류"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- 분류 결과를 표시할 TextView -->
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="결과가 여기에 표시됩니다."
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"/>
+
+    <!-- MFCC 이미지가 표시될 ImageView -->
+    <ImageView
+        android:id="@+id/mfccImageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:visibility="gone"/>
+
 </LinearLayout>

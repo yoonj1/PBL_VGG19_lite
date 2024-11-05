@@ -31,7 +31,7 @@ class MFCC {
     }
 
     private fun computeFFT(frame: FloatArray): FloatArray {
-        var paddedFrame = if (frame.size < FFT_SIZE) frame.copyOf(FFT_SIZE) else frame
+        val paddedFrame = if (frame.size < FFT_SIZE) frame.copyOf(FFT_SIZE) else frame
 
         val fft = FloatFFT_1D(FFT_SIZE.toLong())
         fft.realForward(paddedFrame)
@@ -51,23 +51,22 @@ class MFCC {
         val melMax = hzToMel(SAMPLE_RATE / 2f)
 
         for (i in melFilters.indices) {
-            melFilters[i] = melToHz((melMax * i / (numMelFilters - 1)).toFloat())
+            melFilters[i] = melToHz(melMax * i / (numMelFilters - 1))
         }
 
         val melSpectrum = FloatArray(MEL_BANDS)
         for (m in 1..MEL_BANDS) {
-            val leftFreq = melFilters[m - 1]
-            val centerFreq = melFilters[m]
-            val rightFreq = melFilters[m + 1]
+            val leftFreq = melFilters[m - 1].toInt()
+            val centerFreq = melFilters[m].toInt()
+            val rightFreq = melFilters[m + 1].toInt()
 
-            for (f in spectrum.indices) {
-                when {
-                    f >= leftFreq && f <= centerFreq -> {
-                        melSpectrum[m - 1] += spectrum[f] * (f - leftFreq) / (centerFreq - leftFreq)
+            for (f in leftFreq until rightFreq) {
+                if (f < spectrum.size) {
+                    val weight = when {
+                        f < centerFreq -> (f - leftFreq).toFloat() / (centerFreq - leftFreq)
+                        else -> (rightFreq - f).toFloat() / (rightFreq - centerFreq)
                     }
-                    f >= centerFreq && f <= rightFreq -> {
-                        melSpectrum[m - 1] += spectrum[f] * (rightFreq - f) / (rightFreq - centerFreq)
-                    }
+                    melSpectrum[m - 1] += spectrum[f] * weight
                 }
             }
         }
@@ -75,16 +74,18 @@ class MFCC {
     }
 
     private fun applyLog(melSpectrum: FloatArray): FloatArray {
-        return FloatArray(melSpectrum.size) { i ->
-            log10(melSpectrum[i] + 1e-6f)
+        val logMelSpectrum = FloatArray(melSpectrum.size)
+        for (i in melSpectrum.indices) {
+            logMelSpectrum[i] = log10(1 + melSpectrum[i])  // 로그 변환
         }
+        return logMelSpectrum
     }
 
     private fun computeDCT(logMelSpectrum: FloatArray): FloatArray {
         val mfcc = FloatArray(MEL_BANDS)
         for (k in 0 until MEL_BANDS) {
             for (n in 0 until MEL_BANDS) {
-                mfcc[k] += logMelSpectrum[n] * cos(Math.PI.toFloat() * k * (n + 0.5f) / MEL_BANDS)
+                mfcc[k] += logMelSpectrum[n] * cos(Math.PI * k * (n + 0.5) / MEL_BANDS).toFloat()
             }
             mfcc[k] *= sqrt(2.0f / MEL_BANDS)
         }
