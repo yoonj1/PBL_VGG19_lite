@@ -23,15 +23,6 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"/>
 
-    <!-- MFCC 이미지 확인 버튼 -->
-    <Button
-        android:id="@+id/view_mfcc_image_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MFCC 이미지 확인"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
-
     <!-- 분류 버튼 -->
     <Button
         android:id="@+id/classify_button"
