@@ -12,7 +12,26 @@
         android:layout_height="wrap_content"
         android:text="음성 파일 선택"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
+
+    <!-- 녹음 시작 버튼 -->
+    <Button
+        android:id="@+id/start_recording_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="녹음 시작"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 녹음 종료 버튼 -->
+    <Button
+        android:id="@+id/stop_recording_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="녹음 종료"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:enabled="false" />
 
     <!-- MFCC 추출 버튼 -->
     <Button
@@ -21,18 +40,41 @@
         android:layout_height="wrap_content"
         android:text="MFCC 추출"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <!-- 분류 버튼 -->
     <Button
         android:id="@+id/classify_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이미지 분류"
+        android:text="분류"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
-    <!-- 분류 결과를 표시할 TextView -->
+    <!-- 로딩 상태 표시 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:id="@+id/progress_layout">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/progressMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="작업 진행 중..."
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- 분류 결과 및 녹음 상태 표시 -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
@@ -40,15 +82,8 @@
         android:text="결과가 여기에 표시됩니다."
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:textColor="#000000" />
 
-    <!-- MFCC 이미지가 표시될 ImageView -->
-    <ImageView
-        android:id="@+id/mfccImageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scaleType="fitCenter"
-        android:visibility="gone"/>
 
 </LinearLayout>

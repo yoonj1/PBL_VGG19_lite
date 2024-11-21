@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "VGG19"
+rootProject.name = " vgg19_1118"
 include(":app")
  
