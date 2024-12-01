@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="model_names">
+        <item>BiLSTM Model</item>
+        <item>CNN Model</item>
+    </string-array>
+</resources>

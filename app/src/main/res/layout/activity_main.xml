@@ -1,0 +1,115 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FF">
+
+    <!-- 상단 버튼 레이아웃 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- 파일 업로드 버튼 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_upload"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="파일 업로드"
+                android:src="@drawable/upload" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="파일 업로드"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:fontFamily="@font/font_medium" />
+        </LinearLayout>
+
+        <!-- 녹음 버튼 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_record"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="녹음하기"
+                android:src="@drawable/recode" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="녹음하기"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:fontFamily="@font/font_medium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 중단 버튼 레이아웃 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- MFCC 추출 버튼 -->
+        <Button
+            android:id="@+id/btn_mfcc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/btn_border"
+            android:padding="12dp"
+            android:text="MFCC 추출하기"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:fontFamily="@font/font_medium" />
+
+        <!-- 판별 결과 버튼 -->
+        <Button
+            android:id="@+id/btn_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/btn_border"
+            android:padding="12dp"
+            android:text="판별 결과 확인"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:fontFamily="@font/font_medium" />
+    </LinearLayout>
+
+    <!-- 결과 텍스트 -->
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:fontFamily="@font/font_medium" />
+</RelativeLayout>
